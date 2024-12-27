@@ -1,351 +1,1815 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-  
+  <head>
+    <!-- hexo-inject:begin -->
+    <!-- hexo-inject:end -->
+    <meta charset="utf-8" />
 
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+    <title>Hexo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Hexo" />
+    <meta
+      property="og:url"
+      content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html"
+    />
+    <meta property="og:site_name" content="Hexo" />
+    <meta property="og:locale" content="en" />
+    <meta name="twitter:card" content="summary" />
 
-<body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-欧拉降幂" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" class="article-date">
-  <time datetime="2019-12-12T14:51:09.000Z" itemprop="datePublished">2019-12-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/">欧拉降幂</a>
-    </h1>
-  
+    <link
+      rel="alternate"
+      href="/atom.xml"
+      title="Hexo"
+      type="application/atom+xml"
+    />
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="欧拉降幂"><a href="#欧拉降幂" class="headerlink" title="欧拉降幂"></a>欧拉降幂</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>欧拉函数$$\varphi[p]$$，表示0到x中与x互质的数的个数</p>
-<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><p>对于素数p：$\varphi[p]=p-1$<br>$$<br>\varphi[i<em>p]=\left{\begin{array}{rc1}p&amp;</em>\varphi[i]&amp;(i\ mod\ p= 0)&amp;\(p-1)&amp;*\varphi[i]&amp;(i\ mod\ p\not=0)&amp;\end{array}\right.<br>$$</p>
-<p>以及一个不常用公式<br>$$<br>\varphi[n]=n*\Pi(1-\frac{1}{a_i})<br>$$</p>
-<h3 id="如何求解"><a href="#如何求解" class="headerlink" title="如何求解"></a>如何求解</h3><h4 id="线性筛"><a href="#线性筛" class="headerlink" title="线性筛"></a>线性筛</h4><p>在线性时间内筛出素数和欧拉函数（根据引理）</p>
-<p>（就是在线性筛素数的模板上加上phi数组）</p>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prepare_phi</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (!phi[i])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            pri[++tot] = i, phi[i] = i - <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (i * pri[j] &gt; m)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (!(i % pri[j]))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">            &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">                phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+    <link rel="icon" href="/favicon.png" />
 
-<p>$O(\sqrt n)$求单个欧拉函数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">euler</span><span class="params">(ll x)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	ll ans=x;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=x;i++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">if</span> (x%i==<span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">		&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">			ans-=ans/i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">			<span class="keyword">while</span> (x%i==<span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">				x/=i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span> (x&gt;<span class="number">1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">		ans-=ans/x;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+    <link
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-<h3 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h3><p>若$a\bot n$，则<br>$$<br>a^{\varphi(n)}\equiv1(mod\ n)<br>$$<br>即<br>$$<br>a^{\varphi(n)%n}=1<br>$$<br>也就是说$a^{\varphi(n)}$与$n$互质，以及<br>$$<br>a^b\equiv a^{b%\varphi(n)}(mod\ n)<br>$$</p>
-<h3 id="扩展欧拉定理"><a href="#扩展欧拉定理" class="headerlink" title="扩展欧拉定理"></a>扩展欧拉定理</h3><p>（其实就是把互质情况推广到所有情况）</p>
-<p>如果上式中$a\not\bot n$，有<br>$$<br>a^b=\begin{cases}a^b(mod\ n)&amp;b&lt;\varphi(n)\a^{b%\varphi(n)+\varphi(n)}(mod\ n)&amp;b\geq\varphi(n)\end{cases}​<br>$$</p>
-<h3 id="降幂"><a href="#降幂" class="headerlink" title="降幂"></a>降幂</h3><p>结合上面两种情况，有<br>$$<br>a^b=\begin{cases}a^{b%\varphi(n)}&amp;(mod\ n)&amp;n\bot a\a^b&amp;(mod\ n)&amp;b&lt;\varphi(n)\a^{b%\varphi(n)+\varphi(n)}&amp;(mod\ n)&amp;b\geq\varphi(n)\end{cases}​<br>$$<br>OK，到这里我们就搞定了，以下是洛谷4139欧拉降幂的代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P4139</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10000050</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> m 10000000</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> tot, phi[N], pri[N];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prepare_phi</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (!phi[i])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            pri[++tot] = i, phi[i] = i - <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (i * pri[j] &gt; m)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (!(i % pri[j]))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">            &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">                phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x, ll y, ll mod)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    ll ret = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span> (y)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (y &amp; <span class="number">1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">            ret = ret * x % mod;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">        x = x * x % mod, y &gt;&gt;= <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> ret;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll mod)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (mod == <span class="number">1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> qpow(<span class="number">2</span>, solve(phi[mod]) + phi[mod], mod);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> t, n;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">    prepare_phi();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span> (t--)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, solve(n));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- hexo-inject:begin -->
+    <!-- hexo-inject:end -->
+  </head>
 
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <div id="container">
+      <div id="wrap">
+        <header id="header">
+          <div id="banner"></div>
+          <div id="header-outer" class="outer">
+            <div id="header-title" class="inner">
+              <h1 id="logo-wrap">
+                <a href="/" id="logo">Hexo</a>
+              </h1>
+            </div>
+            <div id="header-inner" class="inner">
+              <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" data-id="ck449u8h80001q07w5ygm0ocz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li></ul>
+                <a class="main-nav-link" href="/">Home</a>
 
-    </footer>
-  </div>
-  
-</article>
+                <a class="main-nav-link" href="/archives">Archives</a>
+              </nav>
+              <nav id="sub-nav">
+                <a
+                  id="nav-rss-link"
+                  class="nav-icon"
+                  href="/atom.xml"
+                  title="RSS Feed"
+                ></a>
 
+                <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+              </nav>
+              <div id="search-form-wrap">
+                <form
+                  action="//google.com/search"
+                  method="get"
+                  accept-charset="UTF-8"
+                  class="search-form"
+                >
+                  <input
+                    type="search"
+                    name="q"
+                    class="search-form-input"
+                    placeholder="Search"
+                  /><button type="submit" class="search-form-submit">
+                    &#xF002;</button
+                  ><input
+                    type="hidden"
+                    name="sitesearch"
+                    value="http://yoursite.com"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="outer">
+          <section id="main">
+            <article
+              id="post-欧拉降幂"
+              class="article article-type-post"
+              itemscope
+              itemprop="blogPost"
+            >
+              <div class="article-meta">
+                <a
+                  href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/"
+                  class="article-date"
+                >
+                  <time
+                    datetime="2019-12-12T14:51:09.000Z"
+                    itemprop="datePublished"
+                    >2019-12-12</time
+                  >
+                </a>
+              </div>
+              <div class="article-inner">
+                <header class="article-header">
+                  <h1 itemprop="name">
+                    <a
+                      class="article-title"
+                      href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/"
+                      >欧拉降幂</a
+                    >
+                  </h1>
+                </header>
 
-  
-    <article id="post-Hexo-Instructions" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/08/Hexo-Instructions/" class="article-date">
-  <time datetime="2019-12-08T09:54:04.000Z" itemprop="datePublished">2019-12-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/08/Hexo-Instructions/">Hexo Instructions</a>
-    </h1>
-  
+                <div class="article-entry" itemprop="articleBody">
+                  <h2 id="欧拉降幂">
+                    <a href="#欧拉降幂" class="headerlink" title="欧拉降幂"></a
+                    >欧拉降幂
+                  </h2>
+                  <h3 id="定义">
+                    <a href="#定义" class="headerlink" title="定义"></a>定义
+                  </h3>
+                  <p>欧拉函数$$\varphi[p]$$，表示0到x中与x互质的数的个数</p>
+                  <h3 id="引理">
+                    <a href="#引理" class="headerlink" title="引理"></a>引理
+                  </h3>
+                  <p>
+                    对于素数p：$\varphi[p]=p-1$<br />$$<br />\varphi[i<em>p]=\left{\begin{array}{rc1}p&amp;</em>\varphi[i]&amp;(i\
+                    mod\ p= 0)&amp;\(p-1)&amp;*\varphi[i]&amp;(i\ mod\
+                    p\not=0)&amp;\end{array}\right.<br />$$
+                  </p>
+                  <p>
+                    以及一个不常用公式<br />$$<br />\varphi[n]=n*\Pi(1-\frac{1}{a_i})<br />$$
+                  </p>
+                  <h3 id="如何求解">
+                    <a href="#如何求解" class="headerlink" title="如何求解"></a
+                    >如何求解
+                  </h3>
+                  <h4 id="线性筛">
+                    <a href="#线性筛" class="headerlink" title="线性筛"></a
+                    >线性筛
+                  </h4>
+                  <p>在线性时间内筛出素数和欧拉函数（根据引理）</p>
+                  <p>（就是在线性筛素数的模板上加上phi数组）</p>
+                  <p>模板：</p>
+                  <figure class="highlight c++">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prepare_phi</span><span class="params">()</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">4</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">5</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">6</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">if</span> (!phi[i])</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">7</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            pri[++tot] = i, phi[i] = i - <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">8</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">9</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">10</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">if</span> (i * pri[j] &gt; m)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">11</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                <span class="keyword">break</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">12</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">if</span> (!(i % pri[j]))</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">13</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">14</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">15</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                <span class="keyword">break</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">16</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">17</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">else</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">18</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">19</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">20</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">21</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="6-绑定域名（可选）"><a href="#6-绑定域名（可选）" class="headerlink" title="6. 绑定域名（可选）"></a>6. 绑定域名（可选）</h2><p>博客搭建完成使用的是 GitHub 的子域名（用户名.<a href="https://link.zhihu.com/?target=http%3A//github.io">http://github.io</a>），我们可以为 Hexo 博客绑定自己的域名替换 GitHub 域名，更加个性化和专业，也利于 SEO。</p>
-<p>我们使用 <a href="https://link.zhihu.com/?target=https%3A//www.namesilo.com/%3Frid%3Dd27fa32do">Namesilo</a> 进行注册，便宜好用没啥套路，使用优惠码 <code>okoff</code> 优惠一美元，com 域名大概 50 块一年。</p>
-<h3 id="6-1-域名注册和解析"><a href="#6-1-域名注册和解析" class="headerlink" title="# 6.1 域名注册和解析"></a><strong># 6.1 域名注册和解析</strong></h3><ul>
-<li>域名注册和解析教程：<a href="https://zhuanlan.zhihu.com/p/33921436" target="_blank" rel="noopener">Namesilo 域名购买及使用教程</a></li>
-</ul>
-<p>按上面教程注册并解析域名，在 DNS 设置部分，删除自带的记录，然后添加 CNAME 记录将 www 域名解析指向 <code>用户名.github.io</code>。</p>
-<p><img src="https://pic3.zhimg.com/80/v2-d5d37c8ad523d8ab5c7c200fabc9585e_hd.jpg" alt="img"></p>
-<h3 id="6-2-绑定域名到-Hexo-博客"><a href="#6-2-绑定域名到-Hexo-博客" class="headerlink" title="# 6.2 绑定域名到 Hexo 博客"></a><strong># 6.2 绑定域名到 Hexo 博客</strong></h3><p>进入本地博客文件夹的 source 目录，打开记事本，里面输入自己的域名，如 <a href="http://www.example.com，保存名称为" target="_blank" rel="noopener">http://www.example.com，保存名称为</a> “CNAME”，格式为 “所有文件”（无 .txt 后缀）。</p>
-<p>清除缓存等文件并重新发布网站：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">hexo clean   # 清除缓存文件等</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">hexo g       # 生成页面</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">hexo s       # 启动预览</span></pre></td></tr></table></figure>
+                  <p>$O(\sqrt n)$求单个欧拉函数</p>
+                  <figure class="highlight c++">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function">ll <span class="title">euler</span><span class="params">(ll x)</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">	ll ans=x;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">4</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=x;i++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">5</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">		<span class="keyword">if</span> (x%i==<span class="number">0</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">6</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">		&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">7</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">			ans-=ans/i;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">8</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">			<span class="keyword">while</span> (x%i==<span class="number">0</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">9</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">				x/=i;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">10</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">		&#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">11</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">	<span class="keyword">if</span> (x&gt;<span class="number">1</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">12</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">		ans-=ans/x;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">13</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">	<span class="keyword">return</span> ans;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">14</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-<p>现在就可以使用自己的域名访问 Hexo 博客了。</p>
-<h3 id="6-3-开启-HTTPS"><a href="#6-3-开启-HTTPS" class="headerlink" title="# 6.3 开启 HTTPS"></a><strong># 6.3 开启 HTTPS</strong></h3><p>配置自己的域名后，需要我们手动开启 HTTPS。打开博客所在 GitHub 仓库，Settings -&gt; 下拉找到 GitHub Pages -&gt; 勾选 Enforce HTTPS。</p>
-<p><img src="https://pic4.zhimg.com/80/v2-54f8744afc9746884e6b3acecfc5f8cf_hd.jpg" alt="img"></p>
-<p>HTTPS 证书部署成功需要一定时间，等大概几分钟再访问域名，就可以看到域名前面的小绿锁了，HTTPS 配置完成！</p>
-<h2 id="7-开始使用"><a href="#7-开始使用" class="headerlink" title="7. 开始使用"></a>7. 开始使用</h2><h3 id="7-1-发布文章"><a href="#7-1-发布文章" class="headerlink" title="# 7.1 发布文章"></a><strong># 7.1 发布文章</strong></h3><p>进入博客所在目录，右键打开 Git Bash Here，创建博文：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">hexo new &quot;My New Post&quot;</span></pre></td></tr></table></figure>
+                  <h3 id="欧拉定理">
+                    <a href="#欧拉定理" class="headerlink" title="欧拉定理"></a
+                    >欧拉定理
+                  </h3>
+                  <p>
+                    若$a\bot n$，则<br />$$<br />a^{\varphi(n)}\equiv1(mod\
+                    n)<br />$$<br />即<br />$$<br />a^{\varphi(n)%n}=1<br />$$<br />也就是说$a^{\varphi(n)}$与$n$互质，以及<br />$$<br />a^b\equiv
+                    a^{b%\varphi(n)}(mod\ n)<br />$$
+                  </p>
+                  <h3 id="扩展欧拉定理">
+                    <a
+                      href="#扩展欧拉定理"
+                      class="headerlink"
+                      title="扩展欧拉定理"
+                    ></a
+                    >扩展欧拉定理
+                  </h3>
+                  <p>（其实就是把互质情况推广到所有情况）</p>
+                  <p>
+                    如果上式中$a\not\bot n$，有<br />$$<br />a^b=\begin{cases}a^b(mod\
+                    n)&amp;b&lt;\varphi(n)\a^{b%\varphi(n)+\varphi(n)}(mod\
+                    n)&amp;b\geq\varphi(n)\end{cases}​<br />$$
+                  </p>
+                  <h3 id="降幂">
+                    <a href="#降幂" class="headerlink" title="降幂"></a>降幂
+                  </h3>
+                  <p>
+                    结合上面两种情况，有<br />$$<br />a^b=\begin{cases}a^{b%\varphi(n)}&amp;(mod\
+                    n)&amp;n\bot a\a^b&amp;(mod\
+                    n)&amp;b&lt;\varphi(n)\a^{b%\varphi(n)+\varphi(n)}&amp;(mod\
+                    n)&amp;b\geq\varphi(n)\end{cases}​<br />$$<br />OK，到这里我们就搞定了，以下是洛谷4139欧拉降幂的代码实现
+                  </p>
+                  <figure class="highlight c++">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P4139</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">4</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">5</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10000050</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">6</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> m 10000000</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">7</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">8</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="keyword">int</span> tot, phi[N], pri[N];</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">9</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prepare_phi</span><span class="params">()</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">10</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">11</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">12</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">13</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">14</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">if</span> (!phi[i])</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">15</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            pri[++tot] = i, phi[i] = i - <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">16</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">17</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">18</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">if</span> (i * pri[j] &gt; m)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">19</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                <span class="keyword">break</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">20</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">if</span> (!(i % pri[j]))</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">21</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">22</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">23</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                <span class="keyword">break</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">24</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">25</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">else</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">26</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">27</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">28</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">29</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">30</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">31</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x, ll y, ll mod)</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">32</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">33</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    ll ret = <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">34</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">while</span> (y)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">35</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">36</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">if</span> (y &amp; <span class="number">1</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">37</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            ret = ret * x % mod;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">38</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        x = x * x % mod, y &gt;&gt;= <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">39</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">40</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">return</span> ret;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">41</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">42</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">43</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll mod)</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">44</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">45</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">if</span> (mod == <span class="number">1</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">46</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">47</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">return</span> qpow(<span class="number">2</span>, solve(phi[mod]) + phi[mod], mod);</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">48</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">49</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">50</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="keyword">int</span> t, n;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">51</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">52</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">53</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    prepare_phi();</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">54</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">55</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">while</span> (t--)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">56</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">57</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">58</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, solve(n));</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">59</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">60</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                </div>
+                <footer class="article-footer">
+                  <a
+                    data-url="http://yoursite.com/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/"
+                    data-id="ck449u8h80001q07w5ygm0ocz"
+                    class="article-share-link"
+                    >Share</a
+                  >
 
-<p>然后 source 文件夹中会出现一个 My New Post.md 文件，就可以使用 Markdown 编辑器在该文件中撰写文章了。</p>
-<p>写完后运行下面代码将文章渲染并部署到 GitHub Pages 上完成发布。<strong>以后每次发布文章都是这两条命令。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">hexo g   # 生成页面</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">hexo d   # 部署发布</span></pre></td></tr></table></figure>
+                  <ul class="article-tag-list" itemprop="keywords">
+                    <li class="article-tag-list-item">
+                      <a
+                        class="article-tag-list-link"
+                        href="/tags/ACM/"
+                        rel="tag"
+                        >ACM</a
+                      >
+                    </li>
+                  </ul>
+                </footer>
+              </div>
+            </article>
 
-<hr>
-<p>也可以不使用命令自己创建 .md 文件，只需在文件开头手动加入如下格式 Front-matter 即可，写完后运行 <code>hexo g</code> 和 <code>hexo d</code> 发布。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">---</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">title: Hello World # 标题</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">date: 2019&#x2F;3&#x2F;26 hh:mm:ss # 时间</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">categories: # 分类</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">- Diary</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">tags: # 标签</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">- PS3</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">- Games</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">---</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">摘要</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">正文</span></pre></td></tr></table></figure>
+            <article
+              id="post-Hexo-Instructions"
+              class="article article-type-post"
+              itemscope
+              itemprop="blogPost"
+            >
+              <div class="article-meta">
+                <a href="/2019/12/08/Hexo-Instructions/" class="article-date">
+                  <time
+                    datetime="2019-12-08T09:54:04.000Z"
+                    itemprop="datePublished"
+                    >2019-12-08</time
+                  >
+                </a>
+              </div>
+              <div class="article-inner">
+                <header class="article-header">
+                  <h1 itemprop="name">
+                    <a
+                      class="article-title"
+                      href="/2019/12/08/Hexo-Instructions/"
+                      >Hexo Instructions</a
+                    >
+                  </h1>
+                </header>
 
-<h3 id="7-2-网站设置"><a href="#7-2-网站设置" class="headerlink" title="# 7.2 网站设置"></a><strong># 7.2 网站设置</strong></h3><p>包括网站名称、描述、作者、链接样式等，全部在网站目录下的 _config.yml 文件中，参考<a href="https://link.zhihu.com/?target=https%3A//hexo.io/zh-cn/docs/configuration">官方文档</a>按需要编辑。</p>
-<p>注意：冒号后要加一个空格！</p>
-<h3 id="7-3-更换主题"><a href="#7-3-更换主题" class="headerlink" title="# 7.3 更换主题"></a><strong># 7.3 更换主题</strong></h3><p>在 <a href="https://link.zhihu.com/?target=https%3A//hexo.io/themes/">Themes | Hexo</a> 选择一个喜欢的主题，比如 <a href="https://link.zhihu.com/?target=http%3A//theme-next.iissnan.com/getting-started.html">NexT</a>，进入网站目录打开 Git Bash Here 下载主题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span></pre></td></tr></table></figure>
+                <div class="article-entry" itemprop="articleBody">
+                  <h2 id="6-绑定域名（可选）">
+                    <a
+                      href="#6-绑定域名（可选）"
+                      class="headerlink"
+                      title="6. 绑定域名（可选）"
+                    ></a
+                    >6. 绑定域名（可选）
+                  </h2>
+                  <p>
+                    博客搭建完成使用的是 GitHub 的子域名（用户名.<a
+                      href="https://link.zhihu.com/?target=http%3A//github.io"
+                      >http://github.io</a
+                    >），我们可以为 Hexo 博客绑定自己的域名替换 GitHub
+                    域名，更加个性化和专业，也利于 SEO。
+                  </p>
+                  <p>
+                    我们使用
+                    <a
+                      href="https://link.zhihu.com/?target=https%3A//www.namesilo.com/%3Frid%3Dd27fa32do"
+                      >Namesilo</a
+                    >
+                    进行注册，便宜好用没啥套路，使用优惠码
+                    <code>okoff</code> 优惠一美元，com 域名大概 50 块一年。
+                  </p>
+                  <h3 id="6-1-域名注册和解析">
+                    <a
+                      href="#6-1-域名注册和解析"
+                      class="headerlink"
+                      title="# 6.1 域名注册和解析"
+                    ></a
+                    ><strong># 6.1 域名注册和解析</strong>
+                  </h3>
+                  <ul>
+                    <li>
+                      域名注册和解析教程：<a
+                        href="https://zhuanlan.zhihu.com/p/33921436"
+                        target="_blank"
+                        rel="noopener"
+                        >Namesilo 域名购买及使用教程</a
+                      >
+                    </li>
+                  </ul>
+                  <p>
+                    按上面教程注册并解析域名，在 DNS
+                    设置部分，删除自带的记录，然后添加 CNAME 记录将 www
+                    域名解析指向 <code>用户名.github.io</code>。
+                  </p>
+                  <p>
+                    <img
+                      src="https://pic3.zhimg.com/80/v2-d5d37c8ad523d8ab5c7c200fabc9585e_hd.jpg"
+                      alt="img"
+                    />
+                  </p>
+                  <h3 id="6-2-绑定域名到-Hexo-博客">
+                    <a
+                      href="#6-2-绑定域名到-Hexo-博客"
+                      class="headerlink"
+                      title="# 6.2 绑定域名到 Hexo 博客"
+                    ></a
+                    ><strong># 6.2 绑定域名到 Hexo 博客</strong>
+                  </h3>
+                  <p>
+                    进入本地博客文件夹的 source
+                    目录，打开记事本，里面输入自己的域名，如
+                    <a
+                      href="http://www.example.com，保存名称为"
+                      target="_blank"
+                      rel="noopener"
+                      >http://www.example.com，保存名称为</a
+                    >
+                    “CNAME”，格式为 “所有文件”（无 .txt 后缀）。
+                  </p>
+                  <p>清除缓存等文件并重新发布网站：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo clean   # 清除缓存文件等</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo g       # 生成页面</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo s       # 启动预览</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-<p>然后修改 _config.yml 中的 theme 为新主题名称 next，发布。（有的主题需要将 _config.yml 替换为主题自带的，参考主题说明。）</p>
-<h3 id="7-4-常用命令"><a href="#7-4-常用命令" class="headerlink" title="# 7.4 常用命令"></a><strong># 7.4 常用命令</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">hexo new &quot;name&quot;       # 新建文章</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">hexo new page &quot;name&quot;  # 新建页面</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">hexo g                # 生成页面</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">hexo d                # 部署</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">hexo g -d             # 生成页面并部署</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">hexo s                # 本地预览</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">hexo clean            # 清除缓存和已生成的静态文件</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">hexo help             # 帮助</span></pre></td></tr></table></figure>
+                  <p>现在就可以使用自己的域名访问 Hexo 博客了。</p>
+                  <h3 id="6-3-开启-HTTPS">
+                    <a
+                      href="#6-3-开启-HTTPS"
+                      class="headerlink"
+                      title="# 6.3 开启 HTTPS"
+                    ></a
+                    ><strong># 6.3 开启 HTTPS</strong>
+                  </h3>
+                  <p>
+                    配置自己的域名后，需要我们手动开启 HTTPS。打开博客所在
+                    GitHub 仓库，Settings -&gt; 下拉找到 GitHub Pages -&gt; 勾选
+                    Enforce HTTPS。
+                  </p>
+                  <p>
+                    <img
+                      src="https://pic4.zhimg.com/80/v2-54f8744afc9746884e6b3acecfc5f8cf_hd.jpg"
+                      alt="img"
+                    />
+                  </p>
+                  <p>
+                    HTTPS
+                    证书部署成功需要一定时间，等大概几分钟再访问域名，就可以看到域名前面的小绿锁了，HTTPS
+                    配置完成！
+                  </p>
+                  <h2 id="7-开始使用">
+                    <a
+                      href="#7-开始使用"
+                      class="headerlink"
+                      title="7. 开始使用"
+                    ></a
+                    >7. 开始使用
+                  </h2>
+                  <h3 id="7-1-发布文章">
+                    <a
+                      href="#7-1-发布文章"
+                      class="headerlink"
+                      title="# 7.1 发布文章"
+                    ></a
+                    ><strong># 7.1 发布文章</strong>
+                  </h3>
+                  <p>进入博客所在目录，右键打开 Git Bash Here，创建博文：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo new &quot;My New Post&quot;</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-<h1 id="帮助8-常见问题"><a href="#帮助8-常见问题" class="headerlink" title="帮助8 常见问题"></a>帮助8 常见问题</h1><p><strong>1、Hexo 设置显示文章摘要，首页不显示全文</strong></p>
-<p>Hexo 主页文章列表默认会显示文章全文，浏览时很不方便，可以在文章中插入 `` 进行分段。</p>
-<p>该代码前面的内容会作为摘要显示，而后面的内容会替换为 “Read More” 隐藏起来。</p>
-<p><img src="https://pic4.zhimg.com/80/v2-45701cf120ca77e6733ad30b40666f33_hd.jpg" alt="img"></p>
-<p><strong>2、设置网站图标</strong></p>
-<p>进入 themes/主题 文件夹，打开 _config.yml 配置文件，找到 favicon 修改，一般格式为：<code>favicon: 图标地址</code>。（不同主题可能略有差别）</p>
-<p><strong>3、修改并部署后没有效果</strong></p>
-<p>使用 <code>hexo clean</code> 清理后重新部署。</p>
-<p><strong>4、开启 HTTPS 后访问网站显示连接不安全？</strong></p>
-<p>证书还未部署生效，等待一会儿，清除浏览器缓存再试。</p>
-<p><strong>5、Mac 安装 Hexo 报错无法安装</strong></p>
-<p>Mac 用户需要管理员权限运行，使用 <code>sudo npm install -g hexo-cli</code> 命令安装。</p>
-<p><strong>6、npm 下载速度慢，甚至完全没反应</strong></p>
-<p>使用 npm 安装程序等待很久也没反应，或者下载速度很慢，可以更换 npm 源为国内 npm 镜像。</p>
-<p>临时更换方法：在 npm 安装命令后面加上：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">--registry https:&#x2F;&#x2F;registry.npm.taobao.org</span></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/08/Hexo-Instructions/" data-id="ck449u8h30000q07wfyxv1oua" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+                  <p>
+                    然后 source 文件夹中会出现一个 My New Post.md
+                    文件，就可以使用 Markdown 编辑器在该文件中撰写文章了。
+                  </p>
+                  <p>
+                    写完后运行下面代码将文章渲染并部署到 GitHub Pages
+                    上完成发布。<strong
+                      >以后每次发布文章都是这两条命令。</strong
+                    >
+                  </p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo g   # 生成页面</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo d   # 部署发布</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-    </footer>
-  </div>
-  
-</article>
+                  <hr />
+                  <p>
+                    也可以不使用命令自己创建 .md
+                    文件，只需在文件开头手动加入如下格式 Front-matter
+                    即可，写完后运行 <code>hexo g</code> 和
+                    <code>hexo d</code> 发布。
+                  </p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">---</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">title: Hello World # 标题</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">date: 2019&#x2F;3&#x2F;26 hh:mm:ss # 时间</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">4</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">categories: # 分类</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">5</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">- Diary</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">6</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">tags: # 标签</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">7</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">- PS3</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">8</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">- Games</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">9</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">---</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">10</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">11</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">摘要</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">12</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&lt;!--more--&gt;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">13</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">正文</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
+                  <h3 id="7-2-网站设置">
+                    <a
+                      href="#7-2-网站设置"
+                      class="headerlink"
+                      title="# 7.2 网站设置"
+                    ></a
+                    ><strong># 7.2 网站设置</strong>
+                  </h3>
+                  <p>
+                    包括网站名称、描述、作者、链接样式等，全部在网站目录下的
+                    _config.yml 文件中，参考<a
+                      href="https://link.zhihu.com/?target=https%3A//hexo.io/zh-cn/docs/configuration"
+                      >官方文档</a
+                    >按需要编辑。
+                  </p>
+                  <p>注意：冒号后要加一个空格！</p>
+                  <h3 id="7-3-更换主题">
+                    <a
+                      href="#7-3-更换主题"
+                      class="headerlink"
+                      title="# 7.3 更换主题"
+                    ></a
+                    ><strong># 7.3 更换主题</strong>
+                  </h3>
+                  <p>
+                    在
+                    <a
+                      href="https://link.zhihu.com/?target=https%3A//hexo.io/themes/"
+                      >Themes | Hexo</a
+                    >
+                    选择一个喜欢的主题，比如
+                    <a
+                      href="https://link.zhihu.com/?target=http%3A//theme-next.iissnan.com/getting-started.html"
+                      >NexT</a
+                    >，进入网站目录打开 Git Bash Here 下载主题：
+                  </p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/04/hello-world/" class="article-date">
-  <time datetime="2019-12-04T13:18:19.802Z" itemprop="datePublished">2019-12-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/04/hello-world/">Hello World</a>
-    </h1>
-  
+                  <p>
+                    然后修改 _config.yml 中的 theme 为新主题名称
+                    next，发布。（有的主题需要将 _config.yml
+                    替换为主题自带的，参考主题说明。）
+                  </p>
+                  <h3 id="7-4-常用命令">
+                    <a
+                      href="#7-4-常用命令"
+                      class="headerlink"
+                      title="# 7.4 常用命令"
+                    ></a
+                    ><strong># 7.4 常用命令</strong>
+                  </h3>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo new &quot;name&quot;       # 新建文章</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo new page &quot;name&quot;  # 新建页面</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo g                # 生成页面</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">4</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo d                # 部署</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">5</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo g -d             # 生成页面并部署</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">6</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo s                # 本地预览</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">7</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo clean            # 清除缓存和已生成的静态文件</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">8</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">hexo help             # 帮助</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
+                  <h1 id="帮助8-常见问题">
+                    <a
+                      href="#帮助8-常见问题"
+                      class="headerlink"
+                      title="帮助8 常见问题"
+                    ></a
+                    >帮助8 常见问题
+                  </h1>
+                  <p>
+                    <strong>1、Hexo 设置显示文章摘要，首页不显示全文</strong>
+                  </p>
+                  <p>
+                    Hexo
+                    主页文章列表默认会显示文章全文，浏览时很不方便，可以在文章中插入
+                    `` 进行分段。
+                  </p>
+                  <p>
+                    该代码前面的内容会作为摘要显示，而后面的内容会替换为 “Read
+                    More” 隐藏起来。
+                  </p>
+                  <p>
+                    <img
+                      src="https://pic4.zhimg.com/80/v2-45701cf120ca77e6733ad30b40666f33_hd.jpg"
+                      alt="img"
+                    />
+                  </p>
+                  <p><strong>2、设置网站图标</strong></p>
+                  <p>
+                    进入 themes/主题 文件夹，打开 _config.yml 配置文件，找到
+                    favicon 修改，一般格式为：<code>favicon: 图标地址</code
+                    >。（不同主题可能略有差别）
+                  </p>
+                  <p><strong>3、修改并部署后没有效果</strong></p>
+                  <p>使用 <code>hexo clean</code> 清理后重新部署。</p>
+                  <p>
+                    <strong>4、开启 HTTPS 后访问网站显示连接不安全？</strong>
+                  </p>
+                  <p>证书还未部署生效，等待一会儿，清除浏览器缓存再试。</p>
+                  <p><strong>5、Mac 安装 Hexo 报错无法安装</strong></p>
+                  <p>
+                    Mac 用户需要管理员权限运行，使用
+                    <code>sudo npm install -g hexo-cli</code> 命令安装。
+                  </p>
+                  <p><strong>6、npm 下载速度慢，甚至完全没反应</strong></p>
+                  <p>
+                    使用 npm
+                    安装程序等待很久也没反应，或者下载速度很慢，可以更换 npm
+                    源为国内 npm 镜像。
+                  </p>
+                  <p>临时更换方法：在 npm 安装命令后面加上：</p>
+                  <figure class="highlight plain">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">--registry https:&#x2F;&#x2F;registry.npm.taobao.org</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                </div>
+                <footer class="article-footer">
+                  <a
+                    data-url="http://yoursite.com/2019/12/08/Hexo-Instructions/"
+                    data-id="ck449u8h30000q07wfyxv1oua"
+                    class="article-share-link"
+                    >Share</a
+                  >
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
+                  <ul class="article-tag-list" itemprop="keywords">
+                    <li class="article-tag-list-item">
+                      <a
+                        class="article-tag-list-link"
+                        href="/tags/hexo/"
+                        rel="tag"
+                        >hexo</a
+                      >
+                    </li>
+                  </ul>
+                </footer>
+              </div>
+            </article>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
+            <article
+              id="post-hello-world"
+              class="article article-type-post"
+              itemscope
+              itemprop="blogPost"
+            >
+              <div class="article-meta">
+                <a href="/2019/12/04/hello-world/" class="article-date">
+                  <time
+                    datetime="2019-12-04T13:18:19.802Z"
+                    itemprop="datePublished"
+                    >2019-12-04</time
+                  >
+                </a>
+              </div>
+              <div class="article-inner">
+                <header class="article-header">
+                  <h1 itemprop="name">
+                    <a class="article-title" href="/2019/12/04/hello-world/"
+                      >Hello World</a
+                    >
+                  </h1>
+                </header>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
+                <div class="article-entry" itemprop="articleBody">
+                  <p>
+                    Welcome to
+                    <a href="https://hexo.io/" target="_blank" rel="noopener"
+                      >Hexo</a
+                    >! This is your very first post. Check
+                    <a
+                      href="https://hexo.io/docs/"
+                      target="_blank"
+                      rel="noopener"
+                      >documentation</a
+                    >
+                    for more info. If you get any problems when using Hexo, you
+                    can find the answer in
+                    <a
+                      href="https://hexo.io/docs/troubleshooting.html"
+                      target="_blank"
+                      rel="noopener"
+                      >troubleshooting</a
+                    >
+                    or you can ask me on
+                    <a
+                      href="https://github.com/hexojs/hexo/issues"
+                      target="_blank"
+                      rel="noopener"
+                      >GitHub</a
+                    >.
+                  </p>
+                  <h2 id="Quick-Start">
+                    <a
+                      href="#Quick-Start"
+                      class="headerlink"
+                      title="Quick Start"
+                    ></a
+                    >Quick Start
+                  </h2>
+                  <h3 id="Create-a-new-post">
+                    <a
+                      href="#Create-a-new-post"
+                      class="headerlink"
+                      title="Create a new post"
+                    ></a
+                    >Create a new post
+                  </h3>
+                  <figure class="highlight bash">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                  <p>
+                    More info:
+                    <a
+                      href="https://hexo.io/docs/writing.html"
+                      target="_blank"
+                      rel="noopener"
+                      >Writing</a
+                    >
+                  </p>
+                  <h3 id="Run-server">
+                    <a
+                      href="#Run-server"
+                      class="headerlink"
+                      title="Run server"
+                    ></a
+                    >Run server
+                  </h3>
+                  <figure class="highlight bash">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">$ hexo server</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/04/hello-world/" data-id="ck449u8hd0003q07w7ptuhcur" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+                  <p>
+                    More info:
+                    <a
+                      href="https://hexo.io/docs/server.html"
+                      target="_blank"
+                      rel="noopener"
+                      >Server</a
+                    >
+                  </p>
+                  <h3 id="Generate-static-files">
+                    <a
+                      href="#Generate-static-files"
+                      class="headerlink"
+                      title="Generate static files"
+                    ></a
+                    >Generate static files
+                  </h3>
+                  <figure class="highlight bash">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">$ hexo generate</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
+                  <p>
+                    More info:
+                    <a
+                      href="https://hexo.io/docs/generating.html"
+                      target="_blank"
+                      rel="noopener"
+                      >Generating</a
+                    >
+                  </p>
+                  <h3 id="Deploy-to-remote-sites">
+                    <a
+                      href="#Deploy-to-remote-sites"
+                      class="headerlink"
+                      title="Deploy to remote sites"
+                    ></a
+                    >Deploy to remote sites
+                  </h3>
+                  <figure class="highlight bash">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">$ hexo deploy</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
 
-  
+                  <p>
+                    More info:
+                    <a
+                      href="https://hexo.io/docs/one-command-deployment.html"
+                      target="_blank"
+                      rel="noopener"
+                      >Deployment</a
+                    >
+                  </p>
+                </div>
+                <footer class="article-footer">
+                  <a
+                    data-url="http://yoursite.com/2019/12/04/hello-world/"
+                    data-id="ck449u8hd0003q07w7ptuhcur"
+                    class="article-share-link"
+                    >Share</a
+                  >
+                </footer>
+              </div>
+            </article>
+          </section>
 
-
-</section>
-        
           <aside id="sidebar">
-  
-    
+            <div class="widget-wrap">
+              <h3 class="widget-title">Tags</h3>
+              <div class="widget">
+                <ul class="tag-list" itemprop="keywords">
+                  <li class="tag-list-item">
+                    <a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a>
+                  </li>
+                  <li class="tag-list-item">
+                    <a class="tag-list-link" href="/tags/hexo/" rel="tag"
+                      >hexo</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
-    </div>
-  </div>
+            <div class="widget-wrap">
+              <h3 class="widget-title">Tag Cloud</h3>
+              <div class="widget tagcloud">
+                <a href="/tags/ACM/" style="font-size: 10px">ACM</a>
+                <a href="/tags/hexo/" style="font-size: 10px">hexo</a>
+              </div>
+            </div>
 
+            <div class="widget-wrap">
+              <h3 class="widget-title">Archives</h3>
+              <div class="widget">
+                <ul class="archive-list">
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2019/12/"
+                      >December 2019</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
-    </div>
-  </div>
+            <div class="widget-wrap">
+              <h3 class="widget-title">Recent Posts</h3>
+              <div class="widget">
+                <ul>
+                  <li>
+                    <a href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/"
+                      >欧拉降幂</a
+                    >
+                  </li>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
-    </div>
-  </div>
+                  <li>
+                    <a href="/2019/12/08/Hexo-Instructions/"
+                      >Hexo Instructions</a
+                    >
+                  </li>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/">欧拉降幂</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/08/Hexo-Instructions/">Hexo Instructions</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+                  <li>
+                    <a href="/2019/12/04/hello-world/">Hello World</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <footer id="footer">
+          <div class="outer">
+            <div id="footer-info" class="inner">
+              &copy; 2019 John Doe<br />
+              Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </div>
+          </div>
+        </footer>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <nav id="mobile-nav">
+        <a href="/" class="mobile-nav-link">Home</a>
+
+        <a href="/archives" class="mobile-nav-link">Archives</a>
+      </nav>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" />
+      <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+      <script src="/js/script.js"></script>
     </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
 </html>

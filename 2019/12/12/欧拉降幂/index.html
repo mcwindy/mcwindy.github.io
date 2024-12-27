@@ -1,225 +1,1091 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-  
+  <head>
+    <!-- hexo-inject:begin -->
+    <!-- hexo-inject:end -->
+    <meta charset="utf-8" />
 
-  
-  <title>欧拉降幂 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欧拉降幂定义欧拉函数$$\varphi[p]$$，表示0到x中与x互质的数的个数 引理对于素数p：$\varphi[p]&#x3D;p-1$$$\varphi[ip]&#x3D;\left{\begin{array}{rc1}p&amp;amp;\varphi[i]&amp;amp;(i\ mod\ p&#x3D; 0)&amp;amp;\(p-1)&amp;amp;*\varphi[i]&amp;amp;(i\ mod\ p\not&#x3D;0)&amp;amp;\end{arr">
-<meta name="keywords" content="ACM">
-<meta property="og:type" content="article">
-<meta property="og:title" content="欧拉降幂">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82&#x2F;index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="欧拉降幂定义欧拉函数$$\varphi[p]$$，表示0到x中与x互质的数的个数 引理对于素数p：$\varphi[p]&#x3D;p-1$$$\varphi[ip]&#x3D;\left{\begin{array}{rc1}p&amp;amp;\varphi[i]&amp;amp;(i\ mod\ p&#x3D; 0)&amp;amp;\(p-1)&amp;amp;*\varphi[i]&amp;amp;(i\ mod\ p\not&#x3D;0)&amp;amp;\end{arr">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-12T14:51:39.263Z">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+    <title>欧拉降幂 | Hexo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta
+      name="description"
+      content="欧拉降幂定义欧拉函数$$\varphi[p]$$，表示0到x中与x互质的数的个数 引理对于素数p：$\varphi[p]&#x3D;p-1$$$\varphi[ip]&#x3D;\left{\begin{array}{rc1}p&amp;amp;\varphi[i]&amp;amp;(i\ mod\ p&#x3D; 0)&amp;amp;\(p-1)&amp;amp;*\varphi[i]&amp;amp;(i\ mod\ p\not&#x3D;0)&amp;amp;\end{arr"
+    />
+    <meta name="keywords" content="ACM" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="欧拉降幂" />
+    <meta
+      property="og:url"
+      content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82&#x2F;index.html"
+    />
+    <meta property="og:site_name" content="Hexo" />
+    <meta
+      property="og:description"
+      content="欧拉降幂定义欧拉函数$$\varphi[p]$$，表示0到x中与x互质的数的个数 引理对于素数p：$\varphi[p]&#x3D;p-1$$$\varphi[ip]&#x3D;\left{\begin{array}{rc1}p&amp;amp;\varphi[i]&amp;amp;(i\ mod\ p&#x3D; 0)&amp;amp;\(p-1)&amp;amp;*\varphi[i]&amp;amp;(i\ mod\ p\not&#x3D;0)&amp;amp;\end{arr"
+    />
+    <meta property="og:locale" content="en" />
+    <meta property="og:updated_time" content="2019-12-12T14:51:39.263Z" />
+    <meta name="twitter:card" content="summary" />
 
-<body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-欧拉降幂" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" class="article-date">
-  <time datetime="2019-12-12T14:51:09.000Z" itemprop="datePublished">2019-12-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      欧拉降幂
-    </h1>
-  
+    <link
+      rel="alternate"
+      href="/atom.xml"
+      title="Hexo"
+      type="application/atom+xml"
+    />
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="欧拉降幂"><a href="#欧拉降幂" class="headerlink" title="欧拉降幂"></a>欧拉降幂</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>欧拉函数$$\varphi[p]$$，表示0到x中与x互质的数的个数</p>
-<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><p>对于素数p：$\varphi[p]=p-1$<br>$$<br>\varphi[i<em>p]=\left{\begin{array}{rc1}p&amp;</em>\varphi[i]&amp;(i\ mod\ p= 0)&amp;\(p-1)&amp;*\varphi[i]&amp;(i\ mod\ p\not=0)&amp;\end{array}\right.<br>$$</p>
-<p>以及一个不常用公式<br>$$<br>\varphi[n]=n*\Pi(1-\frac{1}{a_i})<br>$$</p>
-<h3 id="如何求解"><a href="#如何求解" class="headerlink" title="如何求解"></a>如何求解</h3><h4 id="线性筛"><a href="#线性筛" class="headerlink" title="线性筛"></a>线性筛</h4><p>在线性时间内筛出素数和欧拉函数（根据引理）</p>
-<p>（就是在线性筛素数的模板上加上phi数组）</p>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prepare_phi</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (!phi[i])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            pri[++tot] = i, phi[i] = i - <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (i * pri[j] &gt; m)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (!(i % pri[j]))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">            &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">                phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+    <link rel="icon" href="/favicon.png" />
 
-<p>$O(\sqrt n)$求单个欧拉函数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">euler</span><span class="params">(ll x)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	ll ans=x;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=x;i++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">if</span> (x%i==<span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">		&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">			ans-=ans/i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">			<span class="keyword">while</span> (x%i==<span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">				x/=i;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span> (x&gt;<span class="number">1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">		ans-=ans/x;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> ans;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+    <link
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-<h3 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h3><p>若$a\bot n$，则<br>$$<br>a^{\varphi(n)}\equiv1(mod\ n)<br>$$<br>即<br>$$<br>a^{\varphi(n)%n}=1<br>$$<br>也就是说$a^{\varphi(n)}$与$n$互质，以及<br>$$<br>a^b\equiv a^{b%\varphi(n)}(mod\ n)<br>$$</p>
-<h3 id="扩展欧拉定理"><a href="#扩展欧拉定理" class="headerlink" title="扩展欧拉定理"></a>扩展欧拉定理</h3><p>（其实就是把互质情况推广到所有情况）</p>
-<p>如果上式中$a\not\bot n$，有<br>$$<br>a^b=\begin{cases}a^b(mod\ n)&amp;b&lt;\varphi(n)\a^{b%\varphi(n)+\varphi(n)}(mod\ n)&amp;b\geq\varphi(n)\end{cases}​<br>$$</p>
-<h3 id="降幂"><a href="#降幂" class="headerlink" title="降幂"></a>降幂</h3><p>结合上面两种情况，有<br>$$<br>a^b=\begin{cases}a^{b%\varphi(n)}&amp;(mod\ n)&amp;n\bot a\a^b&amp;(mod\ n)&amp;b&lt;\varphi(n)\a^{b%\varphi(n)+\varphi(n)}&amp;(mod\ n)&amp;b\geq\varphi(n)\end{cases}​<br>$$<br>OK，到这里我们就搞定了，以下是洛谷4139欧拉降幂的代码实现</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P4139</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10000050</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> m 10000000</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> tot, phi[N], pri[N];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prepare_phi</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (!phi[i])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            pri[++tot] = i, phi[i] = i - <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (i * pri[j] &gt; m)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> (!(i % pri[j]))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">            &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">                phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x, ll y, ll mod)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    ll ret = <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span> (y)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (y &amp; <span class="number">1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">            ret = ret * x % mod;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">        x = x * x % mod, y &gt;&gt;= <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> ret;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll mod)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (mod == <span class="number">1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> qpow(<span class="number">2</span>, solve(phi[mod]) + phi[mod], mod);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> t, n;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">    prepare_phi();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span> (t--)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, solve(n));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- hexo-inject:begin -->
+    <!-- hexo-inject:end -->
+  </head>
 
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <div id="container">
+      <div id="wrap">
+        <header id="header">
+          <div id="banner"></div>
+          <div id="header-outer" class="outer">
+            <div id="header-title" class="inner">
+              <h1 id="logo-wrap">
+                <a href="/" id="logo">Hexo</a>
+              </h1>
+            </div>
+            <div id="header-inner" class="inner">
+              <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/" data-id="ck449u8h80001q07w5ygm0ocz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li></ul>
+                <a class="main-nav-link" href="/">Home</a>
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2019/12/08/Hexo-Instructions/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo Instructions</div>
-    </a>
-  
-</nav>
+                <a class="main-nav-link" href="/archives">Archives</a>
+              </nav>
+              <nav id="sub-nav">
+                <a
+                  id="nav-rss-link"
+                  class="nav-icon"
+                  href="/atom.xml"
+                  title="RSS Feed"
+                ></a>
 
-  
-</article>
+                <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+              </nav>
+              <div id="search-form-wrap">
+                <form
+                  action="//google.com/search"
+                  method="get"
+                  accept-charset="UTF-8"
+                  class="search-form"
+                >
+                  <input
+                    type="search"
+                    name="q"
+                    class="search-form-input"
+                    placeholder="Search"
+                  /><button type="submit" class="search-form-submit">
+                    &#xF002;</button
+                  ><input
+                    type="hidden"
+                    name="sitesearch"
+                    value="http://yoursite.com"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="outer">
+          <section id="main">
+            <article
+              id="post-欧拉降幂"
+              class="article article-type-post"
+              itemscope
+              itemprop="blogPost"
+            >
+              <div class="article-meta">
+                <a
+                  href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/"
+                  class="article-date"
+                >
+                  <time
+                    datetime="2019-12-12T14:51:09.000Z"
+                    itemprop="datePublished"
+                    >2019-12-12</time
+                  >
+                </a>
+              </div>
+              <div class="article-inner">
+                <header class="article-header">
+                  <h1 class="article-title" itemprop="name">欧拉降幂</h1>
+                </header>
 
-</section>
-        
+                <div class="article-entry" itemprop="articleBody">
+                  <h2 id="欧拉降幂">
+                    <a href="#欧拉降幂" class="headerlink" title="欧拉降幂"></a
+                    >欧拉降幂
+                  </h2>
+                  <h3 id="定义">
+                    <a href="#定义" class="headerlink" title="定义"></a>定义
+                  </h3>
+                  <p>欧拉函数$$\varphi[p]$$，表示0到x中与x互质的数的个数</p>
+                  <h3 id="引理">
+                    <a href="#引理" class="headerlink" title="引理"></a>引理
+                  </h3>
+                  <p>
+                    对于素数p：$\varphi[p]=p-1$<br />$$<br />\varphi[i<em>p]=\left{\begin{array}{rc1}p&amp;</em>\varphi[i]&amp;(i\
+                    mod\ p= 0)&amp;\(p-1)&amp;*\varphi[i]&amp;(i\ mod\
+                    p\not=0)&amp;\end{array}\right.<br />$$
+                  </p>
+                  <p>
+                    以及一个不常用公式<br />$$<br />\varphi[n]=n*\Pi(1-\frac{1}{a_i})<br />$$
+                  </p>
+                  <h3 id="如何求解">
+                    <a href="#如何求解" class="headerlink" title="如何求解"></a
+                    >如何求解
+                  </h3>
+                  <h4 id="线性筛">
+                    <a href="#线性筛" class="headerlink" title="线性筛"></a
+                    >线性筛
+                  </h4>
+                  <p>在线性时间内筛出素数和欧拉函数（根据引理）</p>
+                  <p>（就是在线性筛素数的模板上加上phi数组）</p>
+                  <p>模板：</p>
+                  <figure class="highlight c++">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prepare_phi</span><span class="params">()</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">4</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">5</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">6</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">if</span> (!phi[i])</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">7</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            pri[++tot] = i, phi[i] = i - <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">8</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">9</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">10</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">if</span> (i * pri[j] &gt; m)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">11</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                <span class="keyword">break</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">12</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">if</span> (!(i % pri[j]))</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">13</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">14</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">15</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                <span class="keyword">break</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">16</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">17</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">else</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">18</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">19</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">20</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">21</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+
+                  <p>$O(\sqrt n)$求单个欧拉函数</p>
+                  <figure class="highlight c++">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function">ll <span class="title">euler</span><span class="params">(ll x)</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">	ll ans=x;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">4</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=x;i++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">5</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">		<span class="keyword">if</span> (x%i==<span class="number">0</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">6</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">		&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">7</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">			ans-=ans/i;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">8</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">			<span class="keyword">while</span> (x%i==<span class="number">0</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">9</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">				x/=i;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">10</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">		&#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">11</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">	<span class="keyword">if</span> (x&gt;<span class="number">1</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">12</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">		ans-=ans/x;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">13</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">	<span class="keyword">return</span> ans;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">14</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+
+                  <h3 id="欧拉定理">
+                    <a href="#欧拉定理" class="headerlink" title="欧拉定理"></a
+                    >欧拉定理
+                  </h3>
+                  <p>
+                    若$a\bot n$，则<br />$$<br />a^{\varphi(n)}\equiv1(mod\
+                    n)<br />$$<br />即<br />$$<br />a^{\varphi(n)%n}=1<br />$$<br />也就是说$a^{\varphi(n)}$与$n$互质，以及<br />$$<br />a^b\equiv
+                    a^{b%\varphi(n)}(mod\ n)<br />$$
+                  </p>
+                  <h3 id="扩展欧拉定理">
+                    <a
+                      href="#扩展欧拉定理"
+                      class="headerlink"
+                      title="扩展欧拉定理"
+                    ></a
+                    >扩展欧拉定理
+                  </h3>
+                  <p>（其实就是把互质情况推广到所有情况）</p>
+                  <p>
+                    如果上式中$a\not\bot n$，有<br />$$<br />a^b=\begin{cases}a^b(mod\
+                    n)&amp;b&lt;\varphi(n)\a^{b%\varphi(n)+\varphi(n)}(mod\
+                    n)&amp;b\geq\varphi(n)\end{cases}​<br />$$
+                  </p>
+                  <h3 id="降幂">
+                    <a href="#降幂" class="headerlink" title="降幂"></a>降幂
+                  </h3>
+                  <p>
+                    结合上面两种情况，有<br />$$<br />a^b=\begin{cases}a^{b%\varphi(n)}&amp;(mod\
+                    n)&amp;n\bot a\a^b&amp;(mod\
+                    n)&amp;b&lt;\varphi(n)\a^{b%\varphi(n)+\varphi(n)}&amp;(mod\
+                    n)&amp;b\geq\varphi(n)\end{cases}​<br />$$<br />OK，到这里我们就搞定了，以下是洛谷4139欧拉降幂的代码实现
+                  </p>
+                  <figure class="highlight c++">
+                    <table>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">1</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="comment">// https://www.luogu.com.cn/problem/P4139</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">2</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">3</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">4</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">5</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10000050</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">6</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> m 10000000</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">7</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">8</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="keyword">int</span> tot, phi[N], pri[N];</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">9</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prepare_phi</span><span class="params">()</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">10</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">11</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">12</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">13</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">14</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">if</span> (!phi[i])</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">15</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            pri[++tot] = i, phi[i] = i - <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">16</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">17</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">18</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">if</span> (i * pri[j] &gt; m)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">19</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                <span class="keyword">break</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">20</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">if</span> (!(i % pri[j]))</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">21</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">22</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                phi[i * pri[j]] = phi[i] * pri[j];</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">23</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                <span class="keyword">break</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">24</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">25</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            <span class="keyword">else</span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">26</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">                phi[i * pri[j]] = phi[i] * (pri[j] - <span class="number">1</span>);</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">27</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">28</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">29</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">30</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">31</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x, ll y, ll mod)</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">32</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">33</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    ll ret = <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">34</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">while</span> (y)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">35</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">36</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">if</span> (y &amp; <span class="number">1</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">37</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">            ret = ret * x % mod;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">38</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        x = x * x % mod, y &gt;&gt;= <span class="number">1</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">39</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">40</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">return</span> ret;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">41</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">42</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">43</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll mod)</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">44</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">45</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">if</span> (mod == <span class="number">1</span>)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">46</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">47</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">return</span> qpow(<span class="number">2</span>, solve(phi[mod]) + phi[mod], mod);</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">48</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">49</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">50</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="keyword">int</span> t, n;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">51</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">52</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line"><span class="function"></span>&#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">53</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    prepare_phi();</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">54</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">55</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    <span class="keyword">while</span> (t--)</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">56</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#123;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">57</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">58</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, solve(n));</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">59</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">    &#125;</span></pre>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="gutter">
+                          <pre><span class="line">60</span></pre>
+                        </td>
+                        <td class="code">
+                          <pre><span class="line">&#125;</span></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                </div>
+                <footer class="article-footer">
+                  <a
+                    data-url="http://yoursite.com/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/"
+                    data-id="ck449u8h80001q07w5ygm0ocz"
+                    class="article-share-link"
+                    >Share</a
+                  >
+
+                  <ul class="article-tag-list" itemprop="keywords">
+                    <li class="article-tag-list-item">
+                      <a
+                        class="article-tag-list-link"
+                        href="/tags/ACM/"
+                        rel="tag"
+                        >ACM</a
+                      >
+                    </li>
+                  </ul>
+                </footer>
+              </div>
+
+              <nav id="article-nav">
+                <a
+                  href="/2019/12/08/Hexo-Instructions/"
+                  id="article-nav-older"
+                  class="article-nav-link-wrap"
+                >
+                  <strong class="article-nav-caption">Older</strong>
+                  <div class="article-nav-title">Hexo Instructions</div>
+                </a>
+              </nav>
+            </article>
+          </section>
+
           <aside id="sidebar">
-  
-    
+            <div class="widget-wrap">
+              <h3 class="widget-title">Tags</h3>
+              <div class="widget">
+                <ul class="tag-list" itemprop="keywords">
+                  <li class="tag-list-item">
+                    <a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a>
+                  </li>
+                  <li class="tag-list-item">
+                    <a class="tag-list-link" href="/tags/hexo/" rel="tag"
+                      >hexo</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
-    </div>
-  </div>
+            <div class="widget-wrap">
+              <h3 class="widget-title">Tag Cloud</h3>
+              <div class="widget tagcloud">
+                <a href="/tags/ACM/" style="font-size: 10px">ACM</a>
+                <a href="/tags/hexo/" style="font-size: 10px">hexo</a>
+              </div>
+            </div>
 
+            <div class="widget-wrap">
+              <h3 class="widget-title">Archives</h3>
+              <div class="widget">
+                <ul class="archive-list">
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2019/12/"
+                      >December 2019</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
-    </div>
-  </div>
+            <div class="widget-wrap">
+              <h3 class="widget-title">Recent Posts</h3>
+              <div class="widget">
+                <ul>
+                  <li>
+                    <a href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/"
+                      >欧拉降幂</a
+                    >
+                  </li>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
-    </div>
-  </div>
+                  <li>
+                    <a href="/2019/12/08/Hexo-Instructions/"
+                      >Hexo Instructions</a
+                    >
+                  </li>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/12/12/%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82/">欧拉降幂</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/08/Hexo-Instructions/">Hexo Instructions</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/04/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+                  <li>
+                    <a href="/2019/12/04/hello-world/">Hello World</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <footer id="footer">
+          <div class="outer">
+            <div id="footer-info" class="inner">
+              &copy; 2019 John Doe<br />
+              Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+            </div>
+          </div>
+        </footer>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <nav id="mobile-nav">
+        <a href="/" class="mobile-nav-link">Home</a>
+
+        <a href="/archives" class="mobile-nav-link">Archives</a>
+      </nav>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" />
+      <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+      <script src="/js/script.js"></script>
     </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
 </html>
